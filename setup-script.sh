@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-resourceGroup="nvnhan-c4-project"
+resourceGroup="nvnhan-cd4-project"
 location="eastus"
 osType="Ubuntu2204"
 vmssName="udacity-vmss"
@@ -146,3 +146,7 @@ az network nsg rule create \
 echo "Port 22 added to NSG: $nsgName"
 
 echo "VMSS script completed!"
+
+# sudo apt update
+# sudo apt install stress
+# sudo stress --cpu 10 --timeout 420 &
