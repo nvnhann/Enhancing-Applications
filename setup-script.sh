@@ -150,3 +150,17 @@ echo "VMSS script completed!"
 # sudo apt update
 # sudo apt install stress
 # sudo stress --cpu 10 --timeout 420 &
+# az acr create --resource-group nvnhan-cd4-project --name myacr202310 --sku Basic
+# az acr login --name myacr202310
+# az acr show --name myacr202106 --query loginServer --output table
+# Associate a tag to the local image. You can use a different tag (say v2, v3, v4, ....) everytime you edit the underlying image. 
+# docker tag azure-vote-front:v1 myacr202310.azurecr.io/azure-vote-front:v1
+# Now you will see myacr202106.azurecr.io/azure-vote-front:v1 if you run "docker images"
+# Push the local registry to remote ACR
+# docker push myacr202310.azurecr.io/azure-vote-front:v1
+# Verify if your image is up in the cloud.
+# az acr repository list --name myacr202310 --output table
+# Associate the AKS cluster with the ACR
+# az aks update -n udacity-cluster -g nvnhan-cd4-project --attach-acr myacr202310
+# kubectl set image deployment azure-vote-front azure-vote-front=myacr202310.azurecr.io/azure-vote-front:v1
+# while true; do wget -q -O- http://4.255.72.138/ done
